@@ -10,7 +10,7 @@ var page_id = 1;
 var callback_stack = [];
 
 // Max interval without requests from master process
-var WATCHDOG_TIMEOUT = 120000;
+var WATCHDOG_TIMEOUT = 30000;
 
 phantom.onError = function (msg, trace) {
   var msgStack = [ 'PHANTOM ERROR: ' + msg ];
@@ -33,7 +33,7 @@ function watchdog_clear() {
   clearTimeout(watchdog_timer_id);
 
   watchdog_timer_id = setTimeout(function () {
-    phantom.exit(0);
+    // phantom.exit(0);
   }, WATCHDOG_TIMEOUT);
 }
 
